@@ -63,24 +63,24 @@ function Game() {
 
           {/* Choices layout */}
           <MDBRow className="justify-content-center mb-4">
-            <MDBCol className="d-flex justify-content-center">
+            <MDBCol className="d-flex justify-content-center container w-50">
               <button
                 onClick={() => handlePlayerChoice("rock")}
                 className="choice-button"
               >
-                <img src={rockImg} alt="Rock" />
+                <img className="img-fluid" src={rockImg} alt="Rock" />
               </button>
               <button
                 onClick={() => handlePlayerChoice("paper")}
                 className="choice-button"
               >
-                <img src={paperImg} alt="Paper" />
+                <img className="img-fluid" src={paperImg} alt="Paper" />
               </button>
               <button
                 onClick={() => handlePlayerChoice("scissors")}
                 className="choice-button"
               >
-                <img src={scissorsImg} alt="Scissors" />
+                <img className="img-fluid" src={scissorsImg} alt="Scissors" />
               </button>
             </MDBCol>
           </MDBRow>

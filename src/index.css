@@ -22,7 +22,8 @@ button {
 
 button img {
   transition: transform 0.2s ease;
-  width: 100px;
+  width: 130px;
+  height: 100px;
   /* Adjust size of the choice images */
 }
 
@@ -60,4 +61,10 @@ button:hover img {
 
 .choice-container h2 {
   margin-right: 10px;
+}
+@media only screen and (max-width: 550px) {
+  button img{
+width: 85px;
+  height: 80px;
+  }
 }
