@@ -16,6 +16,8 @@ function Game() {
   const [playerChoice, setPlayerChoice] = useState("");
   const [computerChoice, setComputerChoice] = useState("");
   const [result, setResult] = useState("");
+  const [playerScore, setPlayerScore] = useState(0); // Track user score
+  const [computerScore, setComputerScore] = useState(0); // Track computer score
 
   const choices = ["rock", "paper", "scissors"];
   const images = {
@@ -24,22 +26,21 @@ function Game() {
     scissors: scissorsImg,
   };
 
-const handlePlayerChoice = (choice) => {
-  setPlayerChoice(choice);
+  const handlePlayerChoice = (choice) => {
+    setPlayerChoice(choice);
 
-  // Computer makes several random choices and then picks the last one
-  let randomChoice;
-  for (let i = 0; i < 5; i++) {
-    // Change 5 to however many times you want the computer to choose
-    randomChoice = choices[Math.floor(Math.random() * choices.length)];
-  }
+    // Computer makes several random choices and then picks the last one
+    let randomChoice;
+    for (let i = 0; i < 5; i++) {
+      // Change 5 to however many times you want the computer to choose
+      randomChoice = choices[Math.floor(Math.random() * choices.length)];
+    }
 
-  setComputerChoice(randomChoice);
+    setComputerChoice(randomChoice);
 
-  // Determine the winner
-  determineWinner(choice, randomChoice);
-};
-
+    // Determine the winner
+    determineWinner(choice, randomChoice);
+  };
 
   const determineWinner = (player, computer) => {
     if (player === computer) {
@@ -50,8 +51,10 @@ const handlePlayerChoice = (choice) => {
       (player === "paper" && computer === "rock")
     ) {
       setResult("You win!");
+      setPlayerScore(playerScore + 1); // Increment player score
     } else {
       setResult("Computer wins!");
+      setComputerScore(computerScore + 1); // Increment computer score
     }
   };
 
@@ -64,13 +67,13 @@ const handlePlayerChoice = (choice) => {
         }}
       >
         <MDBCardBody className="text-center">
-          <h1 className="mb-4">Rock, Paper, Scissors </h1>
+          <h1 className="mb-4">Rock, Paper, Scissors</h1>
           <h4
             style={{ textAlign: "center", color: "violet", fontWeight: "800" }}
           >
             Click the below choices{" "}
             <i
-              class="fa-regular fa-hand-point-down fa-bounce"
+              className="fa-regular fa-hand-point-down fa-bounce"
               style={{ color: "#B197FC" }}
             ></i>
           </h4>
@@ -99,9 +102,19 @@ const handlePlayerChoice = (choice) => {
             </MDBCol>
           </MDBRow>
 
+          {/* Scores */}
+          <MDBRow className="justify-content-center mb-4">
+            <MDBCol>
+              <h3 style={{ color: "blue" }}>Your Score: {playerScore}</h3>
+            </MDBCol>
+            <MDBCol>
+              <h3 style={{ color: "red" }}>Computer Score: {computerScore}</h3>
+            </MDBCol>
+          </MDBRow>
+
           {/* Player and Computer choice comparison */}
           <div className="choice-container">
-            <h2>Your choice:</h2>
+            <h2>Your choice: </h2>
             {playerChoice && (
               <img
                 src={images[playerChoice]}
@@ -112,7 +125,7 @@ const handlePlayerChoice = (choice) => {
           </div>
 
           <div className="choice-container">
-            <h2>Computer's choice:</h2>
+            <h2>Computer's choice: </h2>
             {computerChoice && (
               <img
                 src={images[computerChoice]}
