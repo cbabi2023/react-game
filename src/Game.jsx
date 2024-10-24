@@ -24,16 +24,22 @@ function Game() {
     scissors: scissorsImg,
   };
 
-  const handlePlayerChoice = (choice) => {
-    setPlayerChoice(choice);
+const handlePlayerChoice = (choice) => {
+  setPlayerChoice(choice);
 
-    // Computer makes a random choice
-    const randomChoice = choices[Math.floor(Math.random() * choices.length)];
-    setComputerChoice(randomChoice);
+  // Computer makes several random choices and then picks the last one
+  let randomChoice;
+  for (let i = 0; i < 5; i++) {
+    // Change 5 to however many times you want the computer to choose
+    randomChoice = choices[Math.floor(Math.random() * choices.length)];
+  }
 
-    // Determine the winner
-    determineWinner(choice, randomChoice);
-  };
+  setComputerChoice(randomChoice);
+
+  // Determine the winner
+  determineWinner(choice, randomChoice);
+};
+
 
   const determineWinner = (player, computer) => {
     if (player === computer) {
@@ -53,13 +59,21 @@ function Game() {
     <MDBContainer className="d-flex justify-content-center align-items-center vh-100">
       <MDBCard
         style={{
-          maxWidth: "500px",
           padding: "30px",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+          boxShadow: "4px 8px 16px rgba(0, 0, 0, 0.2)",
         }}
       >
         <MDBCardBody className="text-center">
-          <h1 className="mb-4">Rock, Paper, Scissors</h1>
+          <h1 className="mb-4">Rock, Paper, Scissors </h1>
+          <h4
+            style={{ textAlign: "center", color: "violet", fontWeight: "800" }}
+          >
+            Click the below choices{" "}
+            <i
+              class="fa-regular fa-hand-point-down fa-bounce"
+              style={{ color: "#B197FC" }}
+            ></i>
+          </h4>
 
           {/* Choices layout */}
           <MDBRow className="justify-content-center mb-4">

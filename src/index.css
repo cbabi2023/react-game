@@ -24,7 +24,9 @@ button img {
   transition: transform 0.2s ease;
   width: 130px;
   height: 100px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   /* Adjust size of the choice images */
+  border:2px solid white
 }
 
 button:hover img {
@@ -63,8 +65,9 @@ button:hover img {
   margin-right: 10px;
 }
 @media only screen and (max-width: 550px) {
-  button img{
-width: 85px;
-  height: 80px;
+  button img {
+    width: 85px;
+    height: 80px;
   }
+  
 }
